@@ -3,7 +3,6 @@
 
 #include <atlbase.h> // ATL
 #include <atlcom.h>
-#include <atlstr.h> // CAtlString
 #include <wuapi.h> // WU API
 
 #define CHR(cmd)                                                                                 \
