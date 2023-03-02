@@ -123,11 +123,7 @@ int main()
 {
     HRESULT hr;
 
-#if defined(_ATL_FREE_THREADED)
-    hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
-#else
-    hr = CoInitialize(NULL);
-#endif
+    (void)CoInitializeEx(NULL, COINIT_MULTITHREADED);
 
     std::cout << "wu client app started" << std::endl;
 
