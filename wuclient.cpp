@@ -120,8 +120,6 @@ HRESULT Run()
 
 int main()
 {
-    HRESULT hr;
-
     (void)CoInitializeEx(NULL, COINIT_MULTITHREADED);
 
     std::cout << "wu client app started" << std::endl;
