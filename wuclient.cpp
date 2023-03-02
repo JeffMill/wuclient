@@ -26,7 +26,7 @@ public:
 
     DECLARE_NO_REGISTRY()
 
-        CSearchCompletedCallback()
+    CSearchCompletedCallback()
     {
         eventCompleted = CreateEvent(nullptr /*lpEventAttributes*/, TRUE/*bManualReset*/, FALSE/*bInitialState*/, nullptr/*lpName*/);
     }
