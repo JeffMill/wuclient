@@ -132,10 +132,9 @@ private:
 
         return S_OK;
 	}
-} _Module;
+} _Module; // The CAtlExeModule instance MUST be named _Module
 
 int main()
 {
     return _Module.WinMain(0);
-    // CoUninitialize();
 }
