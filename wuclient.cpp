@@ -133,7 +133,6 @@ private:
         return S_OK;
 	}
 } _Module;
-//extern __declspec(selectany) CAtlModule* _pAtlModule = &_Module;
 
 int main()
 {
