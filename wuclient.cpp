@@ -110,10 +110,9 @@ HRESULT Run()
         CComBSTR title;
         CHR(update->get_Title(&title));
 
-        using utf16_to_utf8 = std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>>;
-        utf16_to_utf8 convert_utf16;
+        std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> utf16_to_utf8;
 
-        std::cout << iUpdate + 1 << ": " << convert_utf16.to_bytes(title) << std::endl;
+        std::cout << iUpdate + 1 << ": " << utf16_to_utf8.to_bytes(title) << std::endl;
     }
 
     return S_OK;
