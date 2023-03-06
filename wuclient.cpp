@@ -3,6 +3,7 @@
 
 #include <atlbase.h> // ATL
 #include <atlcom.h>
+#include <atlstr.h> // CAtlString
 #include <wuapi.h> // WU API
 
 #define CHR(cmd)                                                                                 \
@@ -15,6 +16,16 @@
         }                                                                                        \
     }
 
+void CoutPIDandTID(const char* prefix)
+{
+    const DWORD PID{ GetCurrentProcessId() };
+    const DWORD TID{ GetCurrentThreadId() };
+
+    std::cout << "[" << prefix << "] "
+        << "PID: " << PID << " (0x" << std::hex << PID << std::dec << ") "
+        << "TID: " << TID << " (0x" << std::hex << TID << std::dec << ")"
+        << std::endl;
+}
 class CSearchCompletedCallback :
     public CComObjectRootEx<CComMultiThreadModelNoCS>,
     public ISearchCompletedCallback
@@ -26,7 +37,7 @@ public:
 
     DECLARE_NO_REGISTRY()
 
-    CSearchCompletedCallback()
+        CSearchCompletedCallback()
     {
         eventCompleted = CreateEvent(nullptr /*lpEventAttributes*/, TRUE/*bManualReset*/, FALSE/*bInitialState*/, nullptr/*lpName*/);
     }
@@ -41,7 +52,8 @@ public:
         UNREFERENCED_PARAMETER(job);
         UNREFERENCED_PARAMETER(callbackArgs);
 
-        std::cout << "ISearchCompletedCallback::Invoke called" << std::endl;
+        CoutPIDandTID("ISearchCompletedCallback::Invoke");
+
         SetEvent(eventCompleted);
         return S_OK;
     }
@@ -65,6 +77,7 @@ public:
 
     void RunMessageLoop() throw()
     {
+        CoutPIDandTID("RunMessageLoop");
         Search();
     }
 
@@ -130,8 +143,8 @@ private:
         }
 
         return S_OK;
-	}
-} _Module; // The CAtlExeModule instance MUST be named _Module
+    }
+} _Module; // Must be named "_Module"
 
 int main()
 {
