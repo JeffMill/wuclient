@@ -8,7 +8,7 @@
 
 #define CHR(cmd)                                                                                 \
     {                                                                                            \
-        HRESULT hrTmp = cmd;                                                                     \
+        HRESULT hrTmp = (cmd);                                                                     \
         if (FAILED(hrTmp))                                                                       \
         {                                                                                        \
             std::cout << "Fail " << std::hex << hrTmp << std::dec << " : " << #cmd << std::endl; \
