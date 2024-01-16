@@ -36,7 +36,7 @@ Local var @ 0x6ff358 Type ATL::CComPtr<IUpdateSession>
 
 discuss binary layout.
 
-===============================================================================
+===========================================================================
 
 0:014> !comexts.comobj searcher
 
@@ -57,7 +57,7 @@ Object Details
 InProc, Raw Object
 Class [wuapi!ATL::CComObject<CUpdateSearcher>], Base address [0x0151188c]
 
-===============================================================================
+===========================================================================
 
 bu wuapi!CSusInternalWrapper::BeginFindUpdates
 g
@@ -85,7 +85,7 @@ Attach to server and dump details...
 Click Attach:
 .attach 0n976; g; !comobj /a 0x8264F030; .detach
 
-===============================================================================
+===========================================================================
 
 
 Start-Service -Name wuauserv
@@ -94,14 +94,14 @@ c:\debuggers_x64\windbg.exe -y 'cache*;SRV*https://symweb' -psn wuauserv
 
 g wuclient!CAtlExeModule::Search
 
-===============================================================================
+===========================================================================
 
 0:014> !load comexts
 
 0:014> !comexts.apartment
 (or !comexts.apartment /t TID)
 
-===============================================================================
+===========================================================================
 
 bp wuaueng!CClientCallRecorder::BeginFindUpdates
 
@@ -114,7 +114,7 @@ Thread ID won't match output, as WUAPI creates multiple threads to do federated 
 (There's also /findServer).
 
   
-===============================================================================
+===========================================================================
 
   !comtls          - Displays the COM TLS structure
      +0x068 pCurrentContext  : 0x0000029f`0301a168 CObjectContext
